@@ -1,0 +1,7 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+lotus:
+    resource: "@OvescoLotusBundle/Resources/config/routes.yaml"
+    prefix: /lotus

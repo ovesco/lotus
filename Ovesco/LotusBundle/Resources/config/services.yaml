@@ -1,0 +1,22 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Ovesco\LotusBundle\Controller\:
+        resource: '../../Controller'
+        tags:
+            - { name: controller.service_arguments }
+
+    Ovesco\LotusBundle\Command\:
+        resource: '../../Command'
+        tags:
+            - { name: console.command }
+
+    Ovesco\LotusBundle\Service\:
+        resource: '../../Service'
+
+    Ovesco\LotusBundle\Middleware\:
+        resource: '../../Middleware'
+        tags:
+            - { name: lotus.middleware }
