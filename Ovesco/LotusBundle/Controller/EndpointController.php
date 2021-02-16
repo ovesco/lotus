@@ -2,30 +2,24 @@
 
 namespace Ovesco\LotusBundle\Controller;
 
-use Ovesco\LotusBundle\Service\UserAgentParser;
+use Ovesco\LotusBundle\Service\TokenManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class EndpointController extends AbstractController {
 
     /**
      * @param Request $request
-     * @Route("/yo", name="endpoint")
+     * @Route("/pageView", name="ovesco_lotus_page_view")
      * @return string
      */
-    public function eventAction(Request $request, UserAgentParser $parser) {
-        $detector = $parser->getParser();
-        dump(
-            $detector,
-            $detector->getClient(),
-            $detector->getOs(),
-            $detector->getDevice(),
-            $detector->getDeviceName(),
-            $detector->getModel(),
-            $detector->getBrandName()
-        );
+    public function pageViewAction(Request $request, TokenManager $tokenManager) {
 
-        die();
+        $token = $tokenManager->getLotusToken();
+        dump($token);
+
+        return new Response('<body></body>');
     }
 }

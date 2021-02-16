@@ -12,6 +12,8 @@ class Configuration implements ConfigurationInterface {
         $treeBuilder = new TreeBuilder('ovesco_lotus');
         $treeBuilder->getRootNode()
             ->children()
+                ->scalarNode('base_path')->defaultNull()->end()
+                ->booleanNode('test_mode')->defaultNull()->end()
                 ->arrayNode('geolite')->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('db_storage_path')->defaultNull()->end()

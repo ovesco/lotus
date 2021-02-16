@@ -20,3 +20,7 @@ services:
         resource: '../../Middleware'
         tags:
             - { name: lotus.middleware }
+
+    Ovesco\LotusBundle\Service\TokenManager:
+        tags:
+            - { name: kernel.event_subscriber }

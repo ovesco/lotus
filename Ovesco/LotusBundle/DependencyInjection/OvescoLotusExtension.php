@@ -31,5 +31,10 @@ class OvescoLotusExtension extends Extension {
         $container->getDefinition(DatabaseReader::class)->addArgument($GeoliteStoragePath);
 
         $container->setDefinition(DeviceDetector::class, new Definition(DeviceDetector::class));
+
+        // Params
+        $container->setParameter('lotus_path', $config['base_path']);
+        $testMode = $config['test_mode'] === null ? $container->getParameter('kernel.environment') !== 'prod' : $config['test_mode'];
+        $container->setParameter('lotus_test_mode', $testMode);
     }
 }
